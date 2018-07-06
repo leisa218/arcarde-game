@@ -1,3 +1,4 @@
+'use strict';
 // The Enemies
 // Enemies our player must avoid
 var Enemy = function(y) {
@@ -38,8 +39,7 @@ Enemy.prototype.render = function() {
 Enemy.prototype.checkCollision = function () {
     if (player.x <= this.x + 50 && this.x <= player.x + 20 && player.y <= this.y + 20 &&this.y <= player.y + 20) {
         // when colliding with player, 'bump' them
-        player.x = 200;
-        player.y = 400;
+        player.reset();
     }
 };
 
@@ -67,9 +67,8 @@ Player.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     allEnemies.forEach(function(enemy) {
-        if (enemy.y === (player.y - 12) && enemy.x > player.x - 75 && enemy.x < player.x + 70) {
-            player.x = 200;
-            player.y = 400;
+        if (enemy.y === (this.y - 12) && enemy.x > this.x - 75 && enemy.x < this.x + 70) {
+            this.reset();
         }
     });
     
@@ -114,7 +113,10 @@ Player.prototype.handleInput = function(e) {
     }
 };
 
-
+Player.prototype.reset = function() {
+    this.x = 200;
+    this.y = 400;
+};
 
 
 
@@ -151,8 +153,7 @@ var reset = document.getElementById('reset');
 // When the user clicks on <span> (x), close the modal
 reset.onclick = function() {
     modal.style.display = "none";
-    player.x = 200;
-    player.y = 400;
+    player.reset();
 }
 
 // Modal
@@ -170,15 +171,13 @@ function openModal() {
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
     modal.style.display = "none";
-    player.x = 200;
-    player.y = 400;
+    player.reset();
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
-        player.x = 200;
-        player.y = 400;
+        player.reset();
     }
 }
