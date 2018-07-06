@@ -1,4 +1,4 @@
-frontend-nanodegree-arcade-game
+Frontend Nanodegree Arcade Game
 ===============================
 This is Project Nr. 4 in the Udacity Google Nanodegree Fronten Developer.
 The Goal is to create a game like Frogger as OOP programming JS
