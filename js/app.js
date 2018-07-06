@@ -68,7 +68,6 @@ Player.prototype.update = function(dt) {
     // all computers.
     allEnemies.forEach(function(enemy) {
         if (enemy.y === (player.y - 12) && enemy.x > player.x - 75 && enemy.x < player.x + 70) {
-            //console.log('collistion');
             player.x = 200;
             player.y = 400;
         }
@@ -83,8 +82,6 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(e) {
     // check witch key is pressed and move player
     // check if player touch border of game board and stop movement
-    console.log(this.y);
-    console.log(this.x);
     if(e === 'up'){
         
         if(this.y === 60 || this.y === -25){
@@ -137,10 +134,6 @@ const allEnemies = [];
 allEnemies.push(enemyRow1, enemyRow2, enemyRow3); //push enemises to an array
 
 
-//console.log(allEnemies);
-//const levelOne = allEnemies.push();
-
-
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
@@ -185,5 +178,7 @@ span.onclick = function() {
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
+        player.x = 200;
+        player.y = 400;
     }
 }
