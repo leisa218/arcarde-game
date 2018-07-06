@@ -69,7 +69,9 @@ Player.prototype.update = function (dt) {
     // all computers.
     allEnemies.forEach(function (enemy) {
         if (enemy.y === player.y - 12 && enemy.x > player.x - 75 && enemy.x < player.x + 70) {
-            console.log('collistion');
+            //console.log('collistion');
+            player.x = 200;
+            player.y = 400;
         }
     });
 };
@@ -171,6 +173,8 @@ function openModal() {
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
     modal.style.display = "none";
+    player.x = 200;
+    player.y = 400;
 };
 
 // When the user clicks anywhere outside of the modal, close it
